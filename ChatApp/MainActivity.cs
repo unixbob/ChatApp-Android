@@ -1,19 +1,30 @@
-﻿using Android.App;
-using Android.Widget;
+﻿using System;
+using Android.App;
 using Android.OS;
+using Android.Webkit;
+
 
 namespace ChatApp
 {
     [Activity(Label = "ChatApp", MainLauncher = true)]
+    
     public class MainActivity : Activity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
+
             SetContentView(Resource.Layout.Main);
+            WebView localWebView = FindViewById<WebView>(Resource.Id.webView1);
+            localWebView.Settings.JavaScriptEnabled = true;
+            localWebView.LoadUrl("http://chatapp.pressedontech.com/");
+
         }
+
+  
     }
+
+
 }
 
